@@ -5,6 +5,8 @@ import {
 	Divider,
 	Grid,
 	makeStyles,
+	Menu,
+	MenuItem,
 	Paper,
 	Table,
 	TableBody,
@@ -14,13 +16,15 @@ import {
 	TableRow,
 	TextField,
 } from '@material-ui/core';
-import { KeyboardArrowDown } from '@material-ui/icons';
+import { KeyboardArrowDown, Print, TableChart } from '@material-ui/icons';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react';
 import AppContext from '../utils/AppContext';
 import * as Yup from 'yup';
 import { base_url } from '../app.json';
+import ReactToPrint from 'react-to-print';
+import { CSVLink } from 'react-csv';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -39,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SearchResult(props) {
+	const componentRef = React.useRef();
 	const classes = useStyles();
 	const { contextVariables, setContextVariables } = React.useContext(AppContext);
 
@@ -52,6 +57,16 @@ function SearchResult(props) {
 	});
 
 	const [loadingState, setLoadingState] = React.useState(false);
+
+	// Menu settings
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const openMenu = Boolean(anchorEl);
+	const handleClickMenu = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleCloseMenu = () => {
+		setAnchorEl(null);
+	};
 
 	// Formik settings
 	const formik = useFormik({
@@ -334,17 +349,74 @@ function SearchResult(props) {
 				id='search-results'
 			>
 				<span>Search Results</span>
-				<Button
-					variant='outlined'
-					style={{
-						color: '#1976D2',
-						backgroundColor: '#FFFFFF',
-						textTransform: 'none',
-					}}
-					endIcon={<KeyboardArrowDown />}
-				>
-					options
-				</Button>
+				<div>
+					<Button
+						variant='outlined'
+						style={{
+							color: '#1976D2',
+							backgroundColor: '#FFFFFF',
+							textTransform: 'none',
+						}}
+						endIcon={<KeyboardArrowDown />}
+						onClick={handleClickMenu}
+					>
+						options
+					</Button>
+					<Menu
+						id='options-menu'
+						anchorEl={anchorEl}
+						open={openMenu}
+						onClose={handleCloseMenu}
+					>
+						<MenuItem
+							onClick={handleCloseMenu}
+							style={{
+								fontFamily: 'Arial Rounded MT Bold',
+							}}
+						>
+							<ReactToPrint
+								trigger={() => (
+									<Box display='flex' alignItems='center'>
+										<Print style={{ marginRight: 20 }} />
+										<span>Print</span>
+									</Box>
+								)}
+								content={() => componentRef.current}
+							/>
+							{/* Print */}
+						</MenuItem>
+						<MenuItem
+							style={{
+								fontFamily: 'Arial Rounded MT Bold',
+							}}
+							onClick={handleCloseMenu}
+						>
+							<TableChart style={{ marginRight: 20 }} />
+
+							<CSVLink
+								style={{
+									textDecoration: 'none',
+									color: '#000000',
+								}}
+								data={resultState.searchResults.map((business) => {
+									let businessDetails = {
+										businessName: business.name,
+										businessAddress: business.formatted_address,
+										businessRating: business.rating,
+									};
+									return businessDetails;
+								})}
+								headers={[
+									{ label: 'Business Name', key: 'businessName' },
+									{ label: 'Business Address', key: 'businessAddress' },
+									{ label: 'Rating', key: 'businessRating' },
+								]}
+							>
+								Convert to CSV
+							</CSVLink>
+						</MenuItem>
+					</Menu>
+				</div>
 			</Box>
 			<Box
 				style={{
@@ -355,6 +427,7 @@ function SearchResult(props) {
 				{resultState.searchResults?.length > 0 ? (
 					<>
 						<TableContainer
+							ref={componentRef}
 							component={Paper}
 							style={{
 								marginBottom: 40,

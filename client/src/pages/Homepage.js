@@ -302,22 +302,6 @@ function Homepage() {
 					)}
 				</Button>
 			</Box>
-			<Box
-				style={{
-					paddingBottom: 40,
-					display: 'flex',
-					justifyContent: 'center',
-				}}
-			>
-				<span
-					style={{
-						fontSize: 14,
-						color: 'rgba(0, 0, 0, 0.5)',
-					}}
-				>
-					*Add + to join more than one word
-				</span>
-			</Box>
 		</div>
 	);
 }
