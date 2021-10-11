@@ -1,6 +1,6 @@
 # Find It
 
-A search engine for locating places.
+A search engine tool for locating places.
 
 ## Major Tools Used
 
