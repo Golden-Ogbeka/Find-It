@@ -2,13 +2,19 @@
 
 A search engine for locating places.
 
-Major tools used: NodeJS, ReactJS and NodeJS Client for Google Maps Services.
+## Major Tools Used
 
-User Interface and Logo Design URL: https://www.figma.com/file/v06s62gpM0hZ7ny0RKW6qU/Find-IT?node-id=0%3A1
+NodeJS, ReactJS and NodeJS Client for Google Maps Services.
 
-Demo URL: https://find-it-by-golden-ogbeka.herokuapp.com/
+## User Interface and Logo Design URL
 
-Documentation:
+https://www.figma.com/file/v06s62gpM0hZ7ny0RKW6qU/Find-IT?node-id=0%3A1
+
+## Demo URL
+
+https://find-it-by-golden-ogbeka.herokuapp.com/
+
+## Documentation
 
 The app allows search for any query by specifying the exact location you are interested in. You are allowed to specify the Latitude and Longitude coordinates as well as the location radius in meters. This gives you full control over the results.
 
