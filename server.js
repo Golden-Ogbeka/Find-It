@@ -12,10 +12,6 @@ server.use(express.json()); //To be able to accept input from front-end
 
 server.use(express.static(path.join(__dirname, 'client/build')));
 
-server.get('/', async function (req, res) {
-	res.sendFile(path.join(__dirname, 'client', '/build/index.html'));
-});
-
 server.post('/searchAPI', async (req, res) => {
 	try {
 		let { searchElement, latitude, longitude, radius } = req.body;
@@ -59,6 +55,11 @@ server.post('/searchAPI/next', async (req, res) => {
 	} catch (error) {
 		res.status(500).json(error);
 	}
+});
+
+// Added after all routes because of React's routing
+server.use(async function (req, res) {
+	res.sendFile(path.join(__dirname, 'client', '/build/index.html'));
 });
 
 // Server initialization on port 5000
