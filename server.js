@@ -32,6 +32,7 @@ server.post('/searchAPI', async (req, res) => {
 			nextPageToken: apiResponse.data.next_page_token,
 		});
 	} catch (error) {
+		console.error(error);
 		res.status(500).json(error);
 	}
 });
@@ -53,12 +54,15 @@ server.post('/searchAPI/next', async (req, res) => {
 			nextPageToken: apiResponse.data.next_page_token,
 		});
 	} catch (error) {
+		console.error(error);
 		res.status(500).json(error);
 	}
 });
 
 // Added after all routes because of React's routing
-server.use(async function (req, res) {
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+server.get('/*', async function (req, res) {
 	res.sendFile(path.join(__dirname, 'client', '/build/index.html'));
 });
 
