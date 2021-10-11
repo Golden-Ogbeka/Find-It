@@ -60,7 +60,7 @@ server.post('/searchAPI/next', async (req, res) => {
 });
 
 // Added after all routes because of React's routing
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+server.use(express.static(path.join(__dirname, 'client', 'build')));
 
 server.get('/*', async function (req, res) {
 	res.sendFile(path.join(__dirname, 'client', '/build/index.html'));
