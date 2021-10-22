@@ -6,7 +6,7 @@ A search engine tool for locating places.
 
 NodeJS, ReactJS and NodeJS Client for Google Maps Services.
 
-## User Interface and Logo Design URL
+## User Interface and Logo Design
 
 https://www.figma.com/file/v06s62gpM0hZ7ny0RKW6qU/Find-IT?node-id=0%3A1
 
