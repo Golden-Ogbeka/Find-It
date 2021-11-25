@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
 function Homepage() {
 	const classes = useStyles();
 	const history = useHistory();
-	const { contextVariables, setContextVariables } = React.useContext(AppContext);
+	const { contextVariables, setContextVariables } =
+		React.useContext(AppContext);
 
 	const [loadingState, setLoadingState] = React.useState(false);
 
@@ -146,11 +147,13 @@ function Homepage() {
 							}}
 							id='searchElement'
 							name='searchElement'
-							placeholder='What your are searching for?'
+							placeholder='restaurant, pizza, church ...'
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.searchElement || ''}
-							error={formik.touched.searchElement && formik.errors.searchElement}
+							error={
+								formik.touched.searchElement && formik.errors.searchElement
+							}
 							helperText={
 								formik.touched.searchElement &&
 								formik.errors.searchElement &&
@@ -183,7 +186,7 @@ function Homepage() {
 							}}
 							id='latitude'
 							name='latitude'
-							placeholder="Location's latitude"
+							placeholder='40.7128N'
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.latitude || ''}
@@ -220,7 +223,7 @@ function Homepage() {
 							}}
 							id='longitude'
 							name='longitude'
-							placeholder="Location's longitude"
+							placeholder='74.0060W'
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.longitude || ''}
@@ -263,7 +266,9 @@ function Homepage() {
 							value={formik.values.radius || ''}
 							error={formik.touched.radius && formik.errors.radius}
 							helperText={
-								formik.touched.radius && formik.errors.radius && formik.errors.radius
+								formik.touched.radius &&
+								formik.errors.radius &&
+								formik.errors.radius
 							}
 						/>
 					</Grid>

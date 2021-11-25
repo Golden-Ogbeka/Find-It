@@ -45,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
 function SearchResult(props) {
 	const componentRef = React.useRef();
 	const classes = useStyles();
-	const { contextVariables, setContextVariables } = React.useContext(AppContext);
+	const { contextVariables, setContextVariables } =
+		React.useContext(AppContext);
 
 	const { searchResults, nextPageToken } = props.location.state.apiResponse;
 	const { latitude, longitude, radius, searchElement } =
@@ -180,11 +181,13 @@ function SearchResult(props) {
 							}}
 							id='searchElement'
 							name='searchElement'
-							placeholder='What your are searching for?'
+							placeholder='restaurant, pizza, church ...'
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.searchElement || ''}
-							error={formik.touched.searchElement && formik.errors.searchElement}
+							error={
+								formik.touched.searchElement && formik.errors.searchElement
+							}
 							helperText={
 								formik.touched.searchElement &&
 								formik.errors.searchElement &&
@@ -217,7 +220,7 @@ function SearchResult(props) {
 							}}
 							id='latitude'
 							name='latitude'
-							placeholder="Location's latitude"
+							placeholder='40.7128N'
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.latitude || ''}
@@ -254,7 +257,7 @@ function SearchResult(props) {
 							}}
 							id='longitude'
 							name='longitude'
-							placeholder="Location's longitude"
+							placeholder='74.0060W'
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.longitude || ''}
@@ -297,13 +300,17 @@ function SearchResult(props) {
 							value={formik.values.radius || ''}
 							error={formik.touched.radius && formik.errors.radius}
 							helperText={
-								formik.touched.radius && formik.errors.radius && formik.errors.radius
+								formik.touched.radius &&
+								formik.errors.radius &&
+								formik.errors.radius
 							}
 						/>
 					</Grid>
 					<Grid item lg={2} md={2} sm={12} xs={12}>
 						<Button
-							onClick={loadingState === false ? formik.handleSubmit : () => void 0}
+							onClick={
+								loadingState === false ? formik.handleSubmit : () => void 0
+							}
 							variant='outlined'
 							style={{
 								width: 200,
@@ -434,7 +441,9 @@ function SearchResult(props) {
 								fontFamily: 'Arial Rounded MT Bold',
 							}}
 						>
-							<Table sx={{ minWidth: 650, fontFamily: 'Arial Rounded MT Bold' }}>
+							<Table
+								sx={{ minWidth: 650, fontFamily: 'Arial Rounded MT Bold' }}
+							>
 								<TableHead>
 									<TableRow>
 										<TableCell
@@ -500,7 +509,9 @@ function SearchResult(props) {
 							<Box display='flex' justifyContent='center'>
 								<Button
 									variant='contained'
-									onClick={loadingState === false ? () => loadNextSet() : () => void 0}
+									onClick={
+										loadingState === false ? () => loadNextSet() : () => void 0
+									}
 									style={{
 										width: 200,
 										height: 60,
