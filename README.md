@@ -8,11 +8,11 @@ NodeJS, ReactJS and NodeJS Client for Google Maps Services.
 
 ## User Interface and Logo Design
 
-https://www.figma.com/file/v06s62gpM0hZ7ny0RKW6qU/Find-IT?node-id=0%3A1
+[https://www.figma.com/file/v06s62gpM0hZ7ny0RKW6qU/Find-IT?node-id=0%3A1](https://www.figma.com/file/v06s62gpM0hZ7ny0RKW6qU/Find-IT?node-id=0%3A1)
 
 ## Demo
 
-https://find-it-by-golden-ogbeka.herokuapp.com/
+[https://find-it-by-golden-ogbeka.herokuapp.com/](https://find-it-by-golden-ogbeka.herokuapp.com/)
 
 ## Documentation
 
