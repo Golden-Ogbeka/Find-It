@@ -12,7 +12,7 @@ NodeJS, ReactJS and NodeJS Client for Google Maps Services.
 
 ## Demo
 
-[https://find-it-by-golden-ogbeka.herokuapp.com/](https://find-it-by-golden-ogbeka.herokuapp.com/)
+[https://find-it-by-golden-ogbeka.cyclic.app/](https://find-it-by-golden-ogbeka.cyclic.app/)
 
 ## Documentation
 
